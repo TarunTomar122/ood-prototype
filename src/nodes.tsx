@@ -1,8 +1,11 @@
-export const initialNodes = [
+import { Node, Position } from '@xyflow/react';
+
+export const initialNodes: Node[] = [
     {
         id: 'A',
         type: 'customGroupNode',
         position: { x: 0, y: 0 },
+        data: { label: 'Node A' },
         style: {
             height: 200,
             width: 300,
@@ -10,14 +13,14 @@ export const initialNodes = [
         handles: [
             {
                 id: 'a',
-                position: 'left',
+                position: Position.Left,
                 type: 'source',
                 x: 10,
                 y: 10,
             },
             {
                 id: 'b',
-                position: 'right',
+                position: Position.Right,
                 type: 'target',
                 x: 10,
                 y: 10,
@@ -48,7 +51,7 @@ export const initialNodes = [
         id: 'B',
         type: 'customGroupNode',
         position: { x: -400, y: 200 },
-        data: null,
+        data: { label: 'Node B' },
         style: {
             height: 200,
             width: 300,

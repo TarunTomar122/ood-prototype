@@ -1,11 +1,15 @@
-import { useCallback } from 'react';
-import { Handle, Position } from '@xyflow/react';
+import { Handle, Position, NodeProps } from '@xyflow/react';
 
+type CustomGroupNodeProps = NodeProps & {
+    data: {
+        label: string;
+    };
+};
 
-function CustomGroupNode({ data }) {
-    const onChange = useCallback((evt) => {
-        console.log(evt.target.value);
-    }, []);
+function CustomGroupNode({ data }: CustomGroupNodeProps) {
+
+    const { label } = data;
+    console.log('CustomGroupNode', label);
 
     return (
         <div style={{ border: '2px black solid', padding: 10, borderRadius: 4, height: '100%' }}>

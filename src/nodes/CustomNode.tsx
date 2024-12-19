@@ -1,16 +1,17 @@
-import { useCallback } from 'react';
-import { Handle, Position } from '@xyflow/react';
+import { Handle, Position, NodeProps } from '@xyflow/react';
 
+type TextUpdaterNodeProps = NodeProps & {
+    data: {
+        label: string;
+    };
+};
 
-function TextUpdaterNode({ data }) {
-    const onChange = useCallback((evt) => {
-        console.log(evt.target.value);
-    }, []);
-
+function TextUpdaterNode({ data }: TextUpdaterNodeProps) {
+    const { label } = data;
     return (
         <div style={{ border: '2px black solid', padding: 10, borderRadius: 4, height: '100%' }}>
             <div>
-                Hello I am a custom node
+                Hello I am a custom node with label: {label}
             </div>
 
             <Handle type="source" position={Position.Left} id="a" style={{

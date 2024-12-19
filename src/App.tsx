@@ -5,6 +5,11 @@ import {
   applyEdgeChanges,
   applyNodeChanges,
   Background,
+  Edge,
+  Node,
+  Connection,
+  EdgeChange,
+  NodeChange,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
@@ -17,41 +22,40 @@ import CustomGroupNode from './nodes/GroupNode';
 import './App.css';
 
 function Flow() {
-  const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState(initialEdges);
+  const [nodes, setNodes] = useState<Node[]>(initialNodes);
+  const [edges, setEdges] = useState<Edge[]>(initialEdges);
 
   const nodeTypes = useMemo(() => ({ textUpdater: TextUpdaterNode, customGroupNode: CustomGroupNode }), []);
 
-
   const onNodesChange = useCallback(
-    (changes) => {
-      console.log('onNodesChange', changes)
-      setNodes((nds) => applyNodeChanges(changes, nds))
+    (changes: NodeChange[]) => {
+      console.log('onNodesChange', changes);
+      setNodes((nds) => applyNodeChanges(changes, nds));
     },
     [setNodes],
   );
+
   const onEdgesChange = useCallback(
-    (changes) => {
-      console.log('onEdgesChange', changes)
-      setEdges((eds) => applyEdgeChanges(changes, eds))
+    (changes: EdgeChange[]) => {
+      console.log('onEdgesChange', changes);
+      setEdges((eds) => applyEdgeChanges(changes, eds));
     },
     [setEdges],
   );
+
   const onConnect = useCallback(
-    (connection) => {
-      console.log('onConnenc', connection, edges)
-      connection.type = "smoothstep"
-      setEdges((eds) => addEdge(connection, eds))
+    (connection: Connection) => {
+      console.log('onConnect', connection, edges);
+      (connection as Edge).type = "smoothstep";
+      setEdges((eds) => addEdge(connection, eds));
     },
-    [setEdges],
+    [edges],
   );
 
   return (
     <div className="App">
       <header className="App-header">React Flow - CRA Example</header>
-      <div>
-
-      </div>
+      <div></div>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -60,7 +64,6 @@ function Flow() {
         onConnect={onConnect}
         fitView
         nodeTypes={nodeTypes}
-        type="smoothstep"
         attributionPosition="top-right"
       >
         <Background />
