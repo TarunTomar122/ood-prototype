@@ -95,3 +95,18 @@ export const initialNodes: Node[] = [
         data: { label: 'Node C' },
     },
 ];
+
+export const singleNode: Node[] = [
+    {
+        id: 'A',
+        type: 'main',
+        position: { x: 0, y: 0 },
+        data: { label: 'Node A' },
+    },
+    {
+        id: 'B',
+        type: 'main',
+        position: { x: 600, y: 0 },
+        data: { label: 'Node A' },
+    },
+];
