@@ -6,31 +6,28 @@ import {
     applyNodeChanges,
     Background,
     Edge,
-    Node,
     Connection,
     EdgeChange,
     NodeChange,
+    Controls,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-import { initialNodes, singleNode } from '../../nodes';
-import { initialEdges } from '../../edges';
+import { singleNode } from '../../nodes';
 
-import TextUpdaterNode from '../nodes/CustomNode';
-import NodeComponent from '../nodes/NodeComponent';
-import CustomGroupNode from '../nodes/GroupNode';
+import Card, { CardProps } from '../nodes/Card';
 
 import './Flow.css';
 
 function Flow() {
-    const [nodes, setNodes] = useState<Node[]>(singleNode);
+    
+    const [nodes, setNodes] = useState<CardProps[]>(singleNode);
     const [edges, setEdges] = useState<Edge[]>([]);
 
-    const nodeTypes = useMemo(() => ({ textUpdater: TextUpdaterNode, customGroupNode: CustomGroupNode, main: NodeComponent }), []);
+    const nodeTypes = useMemo(() => ({ card: Card }), []);
 
     const onNodesChange = useCallback(
         (changes: NodeChange[]) => {
-            console.log('onNodesChange', changes);
             setNodes((nds) => applyNodeChanges(changes, nds));
         },
         [setNodes],
@@ -38,7 +35,6 @@ function Flow() {
 
     const onEdgesChange = useCallback(
         (changes: EdgeChange[]) => {
-            console.log('onEdgesChange', changes);
             setEdges((eds) => applyEdgeChanges(changes, eds));
         },
         [setEdges],
@@ -46,7 +42,6 @@ function Flow() {
 
     const onConnect = useCallback(
         (connection: Connection) => {
-            console.log('onConnect', connection, edges);
             (connection as Edge).type = "smoothstep";
             setEdges((eds) => addEdge(connection, eds));
         },
@@ -60,11 +55,12 @@ function Flow() {
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
-            fitView
             nodeTypes={nodeTypes}
+            fitView
             attributionPosition="top-right"
         >
-            <Background color="#ccc" size={-1} bgColor='#E9E9E9'/>
+            <Background color="#ccc" size={-1} bgColor='#E9E9E9' />
+            <Controls />
         </ReactFlow>
     );
 }

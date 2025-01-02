@@ -1,0 +1,21 @@
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-icon {
+    background-color: #E9E9E9;
+    border-radius: 6.58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    padding: 6px;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 700;
+}
+
