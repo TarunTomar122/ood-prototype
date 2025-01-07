@@ -1,14 +1,17 @@
-import { Node } from '@xyflow/react';
+import { CardProps } from './canvas/nodes/Card';
 
-export const singleNode: Node[] = [
+export const singleNode: CardProps[] = [
     {
         id: 'A',
         type: 'card',
         position: { x: 0, y: 0 },
         data: {
+            name: 'Object name',
+            description: 'Object description',
             attributes: [
                 {
-                    label: "Comments"
+                    label: 
+                    "Comments"
                 }
             ],
             metadata: [
@@ -34,6 +37,8 @@ export const singleNode: Node[] = [
         type: 'card',
         position: { x: 600, y: 0 },
         data: {
+            name: 'Object name',
+            description: 'Object description',
             attributes: [
                 {
                     label: "Comments"

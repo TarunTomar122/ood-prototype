@@ -32,6 +32,8 @@ declare module 'react' {
       'sp-icon-light': any;
       'sp-icon-info-circle': any;
       'sp-icon-menu-hamburger': any;
+      'sp-icon-paste': any;
+      'sp-icon-comment': any;
       'sp-checkbox': any;
       'sp-textfield': any;
     }

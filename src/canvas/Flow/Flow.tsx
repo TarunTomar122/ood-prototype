@@ -14,23 +14,30 @@ import {
 import '@xyflow/react/dist/style.css';
 
 import { singleNode } from '../../nodes';
+import { useSelector, useDispatch } from 'react-redux';
+import type { RootState, AppDispatch } from '../../store/store';
+import { setNodes, updateNode } from '../../store/slices/Nodes';
 
 import Card, { CardProps } from '../nodes/Card';
 
 import './Flow.css';
 
 function Flow() {
-    
-    const [nodes, setNodes] = useState<CardProps[]>(singleNode);
+
+    // const [nodes, setNodes] = useState<CardProps[]>(singleNode);
     const [edges, setEdges] = useState<Edge[]>([]);
+
+    const nodes = useSelector((state: RootState) => state.nodes.nodes);
+    const dispatch = useDispatch<AppDispatch>();
 
     const nodeTypes = useMemo(() => ({ card: Card }), []);
 
     const onNodesChange = useCallback(
         (changes: NodeChange[]) => {
-            setNodes((nds) => applyNodeChanges(changes, nds));
+            // setNodes((nds) => applyNodeChanges(changes, nds));
+            dispatch(setNodes(applyNodeChanges(changes, nodes)));
         },
-        [setNodes],
+        [dispatch, nodes],
     );
 
     const onEdgesChange = useCallback(

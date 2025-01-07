@@ -1,0 +1,74 @@
+.editpanel{
+    width: 312px;
+    height: 96vh;
+    position: absolute;
+    top: 6vh;
+    right: 48px;
+    z-index: 99;
+    background-color: #F8F8F8;
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
+    gap: 16px;
+    border-left: 2px solid #E9E9E9;
+}
+
+.editpanel sp-accordion {
+    --mod-accordion-background-color-hover: transparent;
+    --mod-accordion-divider-thickness: 0;
+
+    --mod-accordion-item-header-font-size: 12px;
+    --mod-accordion-item-header-font-weight: 700;
+    --mod-accordion-item-header-color: #222222;
+}
+
+.editpanel-header{
+    width: 100%;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+
+    p{
+        font-size: 18px;
+        font-weight: 700;
+        color: #131313;
+    }
+
+    sp-action-button {
+        --mod-actionbutton-background-color-default: transparent;
+        --mod-actionbutton-background-color-default-selected: transparent;
+        --mod-actionbutton-background-color-default-selected-emphasized: transparent;
+        --mod-actionbutton-background-color-disabled: transparent;
+        --mod-actionbutton-background-color-down: transparent;
+        --mod-actionbutton-background-color-down-selected: transparent;
+        --mod-actionbutton-background-color-down-selected-emphasized: transparent;
+        --mod-actionbutton-background-color-focus: transparent;
+        --mod-actionbutton-background-color-focus-selected: transparent;
+        --mod-actionbutton-background-color-focus-selected-emphasized: transparent;
+        --mod-actionbutton-background-color-hover: transparent;
+        --mod-actionbutton-background-color-hover-selected: transparent;
+        --mod-actionbutton-background-color-hover-selected-emphasized: transparent;
+    }
+}
+
+.editpanel-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px; 
+
+    sp-textfield{
+        width: 100%;
+    }
+}
+
+.editproperty-button-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+}

@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import './styles.css';
 
 import '@spectrum-web-components/textfield/sp-textfield.js';
+import { useEffect } from 'react';
 
 interface EditableLabelProps {
     value: string;
     spanClassName?: string;
     inputClassName?: string;
+    onChange?: (value: string) => void;
 }
 
 export default function EditableLabel(props: EditableLabelProps) {
@@ -25,7 +27,14 @@ export default function EditableLabel(props: EditableLabelProps) {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setText(e.target.value);
+        if (props.onChange) {
+            props.onChange(e.target.value);
+        }
     }
+
+    useEffect(() => {
+        setText(props.value);
+    }, [props.value]);
 
     return (
         <div className='editable-label'>
