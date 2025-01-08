@@ -21,13 +21,6 @@ export interface CardProps extends Node {
 }
 
 export default function Card(props: CardProps) {
-
-    const [attributes, setAttributes] = useState<SectionRowProps[]>(props.data.attributes);
-
-    const [metadata, setMetadata] = useState<SectionRowProps[]>(props.data.metadata);
-
-    const [actions, setActions] = useState<SectionRowProps[]>(props.data.actions);
-
     const nodes = useSelector((state: RootState) => state.nodes.nodes);
     const dispatch = useDispatch<AppDispatch>();
     const node = nodes.find(node => node.id === props.id);
@@ -57,9 +50,10 @@ export default function Card(props: CardProps) {
 
             <Section
                 label="Attributes"
-                rows={attributes}
+                key={JSON.stringify(node.data.attributes)}
+                rows={node.data.attributes}
                 addRow={() => {
-                    setAttributes([...attributes, { label: "New attribute" }]);
+                    dispatch(updateNode({ id: props.id, changes: { attributes: [...node.data.attributes, { label: "New attribute" }] } }));
                 }}
                 onChange={() => { }}
             />
@@ -68,9 +62,10 @@ export default function Card(props: CardProps) {
 
             <Section
                 label="Metadata"
-                rows={metadata}
+                key={JSON.stringify(node.data.metadata)}
+                rows={node.data.metadata}
                 addRow={() => {
-                    setMetadata([...metadata, { label: "New metadata" }]);
+                    dispatch(updateNode({ id: props.id, changes: { metadata: [...node.data.metadata, { label: "New metadata" }] } }));
                 }}
                 onChange={() => { }}
             />
@@ -79,9 +74,10 @@ export default function Card(props: CardProps) {
 
             <Section
                 label="Actions"
-                rows={actions}
+                key={JSON.stringify(node.data.actions)}
+                rows={node.data.actions}
                 addRow={() => {
-                    setActions([...actions, { label: "New action" }]);
+                    dispatch(updateNode({ id: props.id, changes: { actions: [...node.data.actions, { label: "New action" }] } }));
                 }}
                 onChange={() => { }}
             />

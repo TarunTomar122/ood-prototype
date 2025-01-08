@@ -38,7 +38,7 @@ export default function EditPanel(props: EditPanelProps) {
 
             <div className='editpanel-header'>
                 <p>Edit Panel</p>
-                <sp-action-button onClick={() => { props.onClose(); console.log('closing panel...') }} quiet>
+                <sp-action-button onClick={() => { props.onClose(); }} quiet>
                     <sp-icon-close size="s"></sp-icon-close>
                 </sp-action-button>
             </div>
@@ -54,16 +54,45 @@ export default function EditPanel(props: EditPanelProps) {
 
             <div className='editpanel-content'>
                 <sp-field-label for="object-description">Object Description</sp-field-label>
-                <sp-textfield id="object-description" multiline grows placeholder="Value"></sp-textfield>
+                <sp-textfield id="object-description" multiline grows placeholder="Value" value={node.data.description}
+                    onChange={(e: any) => {
+                        dispatch(updateNode({ id: node.id, changes: { description: e.target.value } }));
+                    }}
+                ></sp-textfield>
             </div>
 
             <div className='editproperty'>
                 <sp-accordion density="spacious" quiet size="s" allow-multiple>
                     <sp-accordion-item label="ATTRIBUTES" open>
 
-                        <EditPropertyContainer value="value" />
+                        {
+                            node.data.attributes.map((attribute, index) => {
+                                return (
+                                    <EditPropertyContainer key={index} value={attribute.label} onChange={
+                                        (e: any) => {
+                                            const attributes = [...node.data.attributes];
+                                            const newAttributes = [...attributes];
+                                            newAttributes[index] = { ...newAttributes[index], label: e.target.value };
+                                            dispatch(updateNode({
+                                                id: node.id, changes: {
+                                                    attributes: newAttributes
+                                                }
+                                            }));
+                                        }
+                                    } />
+                                );
+                            })
+                        }
+
                         <div className='editproperty-button-container'>
-                            <sp-action-button>
+                            <sp-action-button onClick={() => {
+                                const attributes = [...node.data.attributes];
+                                dispatch(updateNode({
+                                    id: node.id, changes: {
+                                        attributes: [...attributes, { label: "New attribute" }]
+                                    }
+                                }));
+                            }}>
                                 <sp-icon-add slot="icon" size="s"></sp-icon-add>
                                 Add
                             </sp-action-button>
@@ -76,9 +105,36 @@ export default function EditPanel(props: EditPanelProps) {
                 <sp-accordion density="spacious" quiet size="s" allow-multiple>
                     <sp-accordion-item label="METADATA" open>
 
-                        <EditPropertyContainer value="value" />
+                        {
+                            node.data.metadata.map((metadata, index) => {
+                                return (
+                                    <EditPropertyContainer key={index} value={metadata.label} onChange={
+                                        (e: any) => {
+                                            const metadata = [...node.data.metadata];
+                                            const newMetadata = [...metadata];
+                                            newMetadata[index] = { ...newMetadata[index], label: e.target.value };
+                                            dispatch(updateNode({
+                                                id: node.id, changes: {
+                                                    metadata: newMetadata
+                                                }
+                                            }));
+                                        }
+                                    } />
+                                );
+                            })
+                        }
+
                         <div className='editproperty-button-container'>
-                            <sp-action-button>
+                            <sp-action-button
+                                onClick={() => {
+                                    const metadata = [...node.data.metadata];
+                                    dispatch(updateNode({
+                                        id: node.id, changes: {
+                                            metadata: [...metadata, { label: "New metadata" }]
+                                        }
+                                    }));
+                                }}
+                            >
                                 <sp-icon-add slot="icon" size="s"></sp-icon-add>
                                 Add
                             </sp-action-button>
@@ -90,9 +146,32 @@ export default function EditPanel(props: EditPanelProps) {
                 <sp-accordion density="spacious" quiet size="s" allow-multiple>
                     <sp-accordion-item label="ACTIONS" open>
 
-                        <EditPropertyContainer value="value" />
+                        {
+                            node.data.actions.map((action, index) => {
+                                return (
+                                    <EditPropertyContainer key={index} value={action.label} onChange={
+                                        (e: any) => {
+                                            const actions = [...node.data.actions];
+                                            const newActions = [...actions];
+                                            newActions[index] = { ...newActions[index], label: e.target.value };
+                                            dispatch(updateNode({ id: node.id, changes: { newActions } }));
+                                        }
+                                    } />
+                                );
+                            })
+                        }
+
                         <div className='editproperty-button-container'>
-                            <sp-action-button>
+                            <sp-action-button
+                                onClick={() => {
+                                    const actions = [...node.data.actions];
+                                    dispatch(updateNode({
+                                        id: node.id, changes: {
+                                            actions: [...actions, { label: "New action" }]
+                                        }
+                                    }));
+                                }}
+                            >
                                 <sp-icon-add slot="icon" size="s"></sp-icon-add>
                                 Add
                             </sp-action-button>

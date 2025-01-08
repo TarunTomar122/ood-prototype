@@ -1,6 +1,6 @@
 .editpanel{
     width: 312px;
-    height: 96vh;
+    height: 89vh;
     position: absolute;
     top: 6vh;
     right: 48px;
@@ -13,6 +13,9 @@
     padding-right: 12px;
     gap: 16px;
     border-left: 2px solid #E9E9E9;
+
+    overflow: scroll;
+    padding-bottom: 32px;
 }
 
 .editpanel sp-accordion {
@@ -70,5 +73,4 @@
 .editproperty-button-container{
     display: flex;
     justify-content: flex-end;
-    margin-top: 12px;
 }

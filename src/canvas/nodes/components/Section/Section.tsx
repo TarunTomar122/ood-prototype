@@ -5,6 +5,8 @@ import './styles.css';
 
 import SectionRow, { SectionRowProps } from '../SectionRow/SectionRow';
 
+import { useEffect, useState } from 'react';
+
 interface SectionProps {
     rows: SectionRowProps[];
     label: string;
@@ -13,6 +15,13 @@ interface SectionProps {
 }
 
 export default function Section(props: SectionProps) {
+
+    const [rows, setRows] = useState<SectionRowProps[]>(props.rows);
+
+    useEffect(() => {
+        setRows(props.rows);
+    }, [props.rows]);
+
     return (
         <section className='content'>
 
@@ -25,7 +34,7 @@ export default function Section(props: SectionProps) {
 
             <section className='section-content'>
 
-                {props.rows.map((row, index) => (
+                {rows.map((row, index) => (
                     <SectionRow key={index} {...row} />
                 ))}
 
