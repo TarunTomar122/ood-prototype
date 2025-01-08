@@ -13,10 +13,9 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-import { singleNode } from '../../nodes';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState, AppDispatch } from '../../store/store';
-import { setNodes, updateNode } from '../../store/slices/Nodes';
+import { setNodes } from '../../store/slices/Nodes';
 
 import Card, { CardProps } from '../nodes/Card';
 
@@ -35,7 +34,18 @@ function Flow() {
     const onNodesChange = useCallback(
         (changes: NodeChange[]) => {
             // setNodes((nds) => applyNodeChanges(changes, nds));
-            dispatch(setNodes(applyNodeChanges(changes, nodes)));
+            const updatedNodes = applyNodeChanges(changes, nodes).map(node => ({
+                ...node,
+                data: {
+                    ...node.data,
+                    name: node.data.name || '',
+                    description: node.data.description || '',
+                    attributes: node.data.attributes || [],
+                    metadata: node.data.metadata || [],
+                    actions: node.data.actions || [],
+                }
+            })) as CardProps[];
+            dispatch(setNodes(updatedNodes));
         },
         [dispatch, nodes],
     );

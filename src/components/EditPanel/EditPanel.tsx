@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './styles.css';
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-close.js';
 import '@spectrum-web-components/field-label/sp-field-label.js';
@@ -8,11 +7,10 @@ import '@spectrum-web-components/accordion/sp-accordion-item.js';
 import '@spectrum-web-components/action-button/sp-action-button.js'
 
 import EditPropertyContainer from './EditPropertyContainer/EditPropertyContainer';
-import { CardProps } from '../../canvas/nodes/Card';
 
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState, AppDispatch } from '../../store/store';
-import { setNodes, updateNode } from '../../store/slices/Nodes';
+import { updateNode } from '../../store/slices/Nodes';
 
 export interface EditPanelProps {
     showEditPanel: boolean;
@@ -31,6 +29,10 @@ export default function EditPanel(props: EditPanelProps) {
 
     const node = nodes.find(node => node.id === props.id);
 
+    if (!node) {
+        return null;
+    }
+
     return (
         <div className="editpanel">
 
@@ -44,8 +46,7 @@ export default function EditPanel(props: EditPanelProps) {
             <div className='editpanel-content'>
                 <sp-field-label for="object-name">Object name</sp-field-label>
                 <sp-textfield id="object-name" placeholder="Value" value={node.data.name}
-                    onChange={(e) => {
-                        console.log('changing name...', node.id, e.target.value);
+                    onChange={(e: any) => {
                         dispatch(updateNode({ id: node.id, changes: { name: e.target.value } }));
                     }}
                 ></sp-textfield>

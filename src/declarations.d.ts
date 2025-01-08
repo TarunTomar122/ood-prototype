@@ -1,11 +1,10 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
+import 'react';
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      
       'sp-theme': any;
       'sp-button': any;
-      'sp-theme': any;
       'sp-avatar': any;
       'sp-action-button': any;
       'overlay-trigger': any;
@@ -35,7 +34,8 @@ declare module 'react' {
       'sp-icon-paste': any;
       'sp-icon-comment': any;
       'sp-checkbox': any;
-      'sp-textfield': any;
+      'sp-icon-close': any;
+      'sp-icon-add': any;
     }
   }
 }

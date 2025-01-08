@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-
 import './styles.css';
 
 import '@spectrum-web-components/textfield/sp-textfield.js';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface EditableLabelProps {
     value: string;

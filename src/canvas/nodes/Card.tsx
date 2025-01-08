@@ -6,26 +6,21 @@ import './card.css';
 import EditableLabel from '../../components/EditableLabel/EditableLabel';
 import Section from './components/Section/Section';
 import { SectionRowProps } from './components/SectionRow/SectionRow';
-import { useEffect } from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState, AppDispatch } from '../../store/store';
-import { setNodes, updateNode } from '../../store/slices/Nodes';
+import { updateNode } from '../../store/slices/Nodes';
 
-export type CardProps = Node & {
-    id: string;
+export interface CardProps extends Node {
     data: {
         name: string;
         description: string;
-        attributes: SectionRowProps[];
-        metadata: SectionRowProps[];
-        actions: SectionRowProps[];
+        attributes: any[];
+        metadata: any[];
+        actions: any[];
     };
-};
+}
 
 export default function Card(props: CardProps) {
-
-    const [name, setName] = useState<string>(props.data.name);
 
     const [attributes, setAttributes] = useState<SectionRowProps[]>(props.data.attributes);
 
@@ -37,6 +32,9 @@ export default function Card(props: CardProps) {
     const dispatch = useDispatch<AppDispatch>();
     const node = nodes.find(node => node.id === props.id);
 
+    if (!node) {
+        return null;
+    }
 
     return (
         <div className='card' onClick={() => {
@@ -88,21 +86,6 @@ export default function Card(props: CardProps) {
                 onChange={() => { }}
             />
 
-            {/* <Handle type="source" position={Position.Left} id="a" style={{
-                height: "100%",
-                borderRadius: 0,
-                opacity: 0
-            }} />
-
-            <Handle
-                type="target"
-                position={Position.Right}
-                id="d"
-                style={{
-                    height: "20%",
-                    borderRadius: 20,
-                }}
-            /> */}
         </div >
     );
 }
