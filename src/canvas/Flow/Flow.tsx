@@ -60,6 +60,7 @@ function Flow() {
     const onConnect = useCallback(
         (connection: Connection) => {
             (connection as Edge).type = "smoothstep";
+            console.log('onConnect', connection);
             setEdges((eds) => addEdge(connection, eds));
         },
         [edges],

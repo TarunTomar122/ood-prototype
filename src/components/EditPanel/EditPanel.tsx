@@ -89,7 +89,7 @@ export default function EditPanel(props: EditPanelProps) {
                                 const attributes = [...node.data.attributes];
                                 dispatch(updateNode({
                                     id: node.id, changes: {
-                                        attributes: [...attributes, { label: "New attribute" }]
+                                        attributes: [...attributes, { label: "New attribute", id: "1a2b3c" }]
                                     }
                                 }));
                             }}>
@@ -130,7 +130,7 @@ export default function EditPanel(props: EditPanelProps) {
                                     const metadata = [...node.data.metadata];
                                     dispatch(updateNode({
                                         id: node.id, changes: {
-                                            metadata: [...metadata, { label: "New metadata" }]
+                                            metadata: [...metadata, { label: "New metadata", id: "2a3b4c" }]
                                         }
                                     }));
                                 }}
@@ -154,7 +154,7 @@ export default function EditPanel(props: EditPanelProps) {
                                             const actions = [...node.data.actions];
                                             const newActions = [...actions];
                                             newActions[index] = { ...newActions[index], label: e.target.value };
-                                            dispatch(updateNode({ id: node.id, changes: { newActions } }));
+                                            dispatch(updateNode({ id: node.id, changes: { actions: newActions } }));
                                         }
                                     } />
                                 );
@@ -167,7 +167,7 @@ export default function EditPanel(props: EditPanelProps) {
                                     const actions = [...node.data.actions];
                                     dispatch(updateNode({
                                         id: node.id, changes: {
-                                            actions: [...actions, { label: "New action" }]
+                                            actions: [...actions, { label: "New action", id: "4a5b6c" }]
                                         }
                                     }));
                                 }}

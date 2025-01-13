@@ -11,23 +11,33 @@ export const singleNode: CardProps[] = [
             attributes: [
                 {
                     label: 
-                    "Comments"
+                    "Comments",
+                    id: "1",
+                    checked: false
                 }
             ],
             metadata: [
                 {
-                    label: "Priority"
+                    label: "Priority",
+                    id: "2",
+                    checked: false
                 }
             ],
             actions: [
                 {
-                    label: "Edit"
+                    label: "Edit",
+                    id: "3",
+                    checked: false
                 },
                 {
-                    label: "Delete"
+                    label: "Delete",
+                    id: "4",
+                    checked: false
                 },
                 {
-                    label: "Mark as resolved"
+                    label: "Mark as resolved",
+                    id: "5",
+                    checked: false
                 }
             ]
         },
@@ -41,23 +51,33 @@ export const singleNode: CardProps[] = [
             description: 'Object description',
             attributes: [
                 {
-                    label: "Comments"
+                    label: "Comments",
+                    id: "1",
+                    checked: false
                 }
             ],
             metadata: [
                 {
-                    label: "Priority"
+                    label: "Priority",
+                    id: "2",
+                    checked: false
                 }
             ],
             actions: [
                 {
-                    label: "Edit"
+                    label: "Edit",
+                    id: "3",
+                    checked: false
                 },
                 {
-                    label: "Delete"
+                    label: "Delete",
+                    id: "4",
+                    checked: false
                 },
                 {
-                    label: "Mark as resolved"
+                    label: "Mark as resolved",
+                    id: "5",
+                    checked: false
                 }
             ]
         },

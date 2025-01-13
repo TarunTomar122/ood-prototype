@@ -1,11 +1,9 @@
 import { Node } from '@xyflow/react';
-import { useState } from 'react';
 
 import './card.css';
 
 import EditableLabel from '../../components/EditableLabel/EditableLabel';
 import Section from './components/Section/Section';
-import { SectionRowProps } from './components/SectionRow/SectionRow';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState, AppDispatch } from '../../store/store';
 import { updateNode } from '../../store/slices/Nodes';
@@ -53,9 +51,13 @@ export default function Card(props: CardProps) {
                 key={JSON.stringify(node.data.attributes)}
                 rows={node.data.attributes}
                 addRow={() => {
-                    dispatch(updateNode({ id: props.id, changes: { attributes: [...node.data.attributes, { label: "New attribute" }] } }));
+                    dispatch(updateNode({ id: props.id, changes: { attributes: [...node.data.attributes, { label: "New attribute", id: "3a2b1c" }] } }));
                 }}
                 onChange={() => { }}
+                onCheckboxChange={(id: string, checked: boolean) => {
+                    console.log('id', id, 'checked', checked);
+                    dispatch(updateNode({ id: props.id, changes: { attributes: node.data.attributes.map(attribute => attribute.id === id ? { ...attribute, checked } : attribute) } }));
+                }}
             />
 
             {/** Metadata */}
@@ -65,9 +67,12 @@ export default function Card(props: CardProps) {
                 key={JSON.stringify(node.data.metadata)}
                 rows={node.data.metadata}
                 addRow={() => {
-                    dispatch(updateNode({ id: props.id, changes: { metadata: [...node.data.metadata, { label: "New metadata" }] } }));
+                    dispatch(updateNode({ id: props.id, changes: { metadata: [...node.data.metadata, { label: "New metadata", id: "2a3b4c" }] } }));
                 }}
                 onChange={() => { }}
+                onCheckboxChange={(id: string, checked: boolean) => {
+                    dispatch(updateNode({ id: props.id, changes: { metadata: node.data.metadata.map(metadata => metadata.id === id ? { ...metadata, checked } : metadata) } }));
+                }}
             />
 
             {/** Actions */}
@@ -77,9 +82,12 @@ export default function Card(props: CardProps) {
                 key={JSON.stringify(node.data.actions)}
                 rows={node.data.actions}
                 addRow={() => {
-                    dispatch(updateNode({ id: props.id, changes: { actions: [...node.data.actions, { label: "New action" }] } }));
+                    dispatch(updateNode({ id: props.id, changes: { actions: [...node.data.actions, { label: "New action", id: "1a2b3c" }] } }));
                 }}
                 onChange={() => { }}
+                onCheckboxChange={(id: string, checked: boolean) => {
+                    dispatch(updateNode({ id: props.id, changes: { actions: node.data.actions.map(action => action.id === id ? { ...action, checked } : action) } }));
+                }}
             />
 
         </div >

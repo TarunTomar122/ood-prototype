@@ -7,26 +7,29 @@ import './styles.css';
 
 export interface SectionRowProps {
     label: string;
+    id: string;
+    checked: boolean;
     onNodeConnect?: (nodeId: string) => void;
+    onCheckboxChange: (id: string, checked: boolean) => void;
 }
 
-export default function SectionRow({ label }: SectionRowProps) {
+export default function SectionRow({ label, id, onCheckboxChange, checked }: SectionRowProps) {
     return (
         <div className='content-row'>
 
             <sp-icon-menu-hamburger size="m"></sp-icon-menu-hamburger>
 
-            <EditableCheckbox value={label} spanClassName='checkbox-title' inputClassName='checkbox-input' />
+            <EditableCheckbox  id={id} value={label} checked={checked} onCheckboxChange={onCheckboxChange} spanClassName='checkbox-title' inputClassName='checkbox-input' />
             <Handle
                 type="target"
                 position={Position.Left}
-                id={label}
+                id={id}
                 className="left-connector"
             />
             <Handle
                 type="source"
                 position={Position.Right}
-                id={label}
+                id={id}
                 className="right-connector"
             />
         </div>

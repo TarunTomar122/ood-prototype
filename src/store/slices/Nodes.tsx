@@ -25,7 +25,6 @@ const nodesSlice = createSlice({
         },
         updateNode: (state, action: PayloadAction<UpdateNodeState>) => {
             const index = state.nodes.findIndex(node => node.id === action.payload.id);
-            console.log('index', index, action.payload.changes);
             if (index !== -1) {
                 // say we got the name updated in the changes then we have to update that from state.nodes[index].data
                 // and the changes can be any other property of the node

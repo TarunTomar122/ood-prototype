@@ -5,14 +5,18 @@ import './styles.css';
 import '@spectrum-web-components/checkbox/sp-checkbox.js';
 
 interface EditableCheckboxProps {
+    id: string;
     value: string;
+    checked: boolean;
     spanClassName?: string;
     inputClassName?: string;
+    onCheckboxChange: (id: string, checked: boolean) => void;
 }
 
 export default function EditableLabel(props: EditableCheckboxProps) {
     const [isEditing, setIsEditing] = useState(false);
     const [text, setText] = useState(props.value);
+    const [checked, setChecked] = useState(props.checked);
 
     const handleFocus = () => {
         setIsEditing(true);
@@ -20,15 +24,15 @@ export default function EditableLabel(props: EditableCheckboxProps) {
 
     const handleClick = (e: React.MouseEvent) => {
         // Prevent the checkbox from toggling when clicking on the text area
-
-        console.log('e.target', (e.target as HTMLElement).tagName);
         if ((e.target as HTMLElement).tagName !== 'SP-CHECKBOX') {
             handleFocus();
         }
+        e.stopPropagation();
     };
 
     const handleCheckboxChange = (e: any) => {
-        console.log('checkbox change', e);
+        props.onCheckboxChange(props.id, e.target.checked);
+        setChecked(e.target.checked);
     }
 
     const handleBlur = () => {
@@ -55,6 +59,7 @@ export default function EditableLabel(props: EditableCheckboxProps) {
                     onClick={handleClick}
                     onChange={handleCheckboxChange}
                     className={props.spanClassName}
+                    checked={checked}
                 >
                     {text}
                 </sp-checkbox>

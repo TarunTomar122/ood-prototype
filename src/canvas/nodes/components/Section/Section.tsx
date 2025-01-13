@@ -12,6 +12,7 @@ interface SectionProps {
     label: string;
     addRow: () => void;
     onChange: (rows: SectionRowProps[]) => void;
+    onCheckboxChange: (id: string, checked: boolean) => void;
 }
 
 export default function Section(props: SectionProps) {
@@ -27,7 +28,7 @@ export default function Section(props: SectionProps) {
 
             <div className='content-header'>
                 <p className='section-title'>{props.label}</p>
-                <div className="section-icon" onClick={() => props.addRow()}>
+                <div className="section-icon" onClick={(event) => {props.addRow(); event?.stopPropagation(); event?.preventDefault();}}>
                     <sp-icon-add size="m"></sp-icon-add>
                 </div>
             </div>
@@ -35,7 +36,7 @@ export default function Section(props: SectionProps) {
             <section className='section-content'>
 
                 {rows.map((row, index) => (
-                    <SectionRow key={index} {...row} />
+                    <SectionRow key={index} {...row} onCheckboxChange={props.onCheckboxChange} />
                 ))}
 
             </section>
