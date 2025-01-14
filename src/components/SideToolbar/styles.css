@@ -1,0 +1,31 @@
+.side-toolbar {
+    position: absolute;
+    top: 8vh;
+    left: 1vw;
+    z-index: 1000;
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.side-toolbar-button {
+    display: flex;
+    justify-content: flex-end;
+
+    sp-action-button {
+        --mod-actionbutton-background-color-default: transparent;
+        --mod-actionbutton-background-color-default-selected: transparent;
+        --mod-actionbutton-background-color-default-selected-emphasized: transparent;
+        --mod-actionbutton-background-color-disabled: transparent;
+        --mod-actionbutton-background-color-down: transparent;
+        --mod-actionbutton-background-color-down-selected: transparent;
+        --mod-actionbutton-background-color-down-selected-emphasized: transparent;
+        --mod-actionbutton-background-color-focus: transparent;
+        --mod-actionbutton-background-color-focus-selected: transparent;
+        --mod-actionbutton-background-color-focus-selected-emphasized: transparent;
+        --mod-actionbutton-background-color-hover: transparent;
+        --mod-actionbutton-background-color-hover-selected: transparent;
+        --mod-actionbutton-background-color-hover-selected-emphasized: transparent;
+    }
+}

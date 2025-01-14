@@ -14,6 +14,7 @@ import '@spectrum-web-components/theme/spectrum-two/scale-medium.js';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import EditPanel from './components/EditPanel/EditPanel';
+import SideToolbar from './components/SideToolbar/SideToolbar';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
       <Sidebar />
       <EditPanel showEditPanel={showEditPanel} id={nodeId} onClose={() => { setShowEditPanel(false) }} />
 
+      <SideToolbar />
       <div className='canvas'>
         <Flow />
       </div>
