@@ -19,7 +19,7 @@
     "@spectrum-web-components/icons-workflow": "^1.0.3",
     "@spectrum-web-components/textfield": "^1.0.3",
     "@spectrum-web-components/theme": "^1.0.3",
-    "@xyflow/react": "^12.3.6",
+    "@xyflow/react": "^12.4.0",
     "react": "^19.0.0",
     "react-dom": "^19",
     "react-redux": "^9.2.0"
