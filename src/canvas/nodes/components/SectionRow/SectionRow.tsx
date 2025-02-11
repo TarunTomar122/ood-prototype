@@ -3,7 +3,7 @@ import { Handle, Position } from '@xyflow/react';
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-menu-hamburger.js';
 import EditableCheckbox from '../../../../components/EditableCheckbox/EditableCheckbox';
 
-import './styles.css';
+// import './styles.css';
 
 export interface SectionRowProps {
     label: string;

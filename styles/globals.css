@@ -1,0 +1,9 @@
+@import '../src/App.css';
+@import '../src/index.css';
+@import '../src/components/Header/Header.css';
+@import '../src/components/Sidebar/Sidebar.css';
+@import '../src/components/EditPanel/styles.css';
+@import '../src/components/SideToolbar/styles.css';
+@import '../src/canvas/nodes/card.css';
+@import '../src/canvas/nodes/components/Section/styles.css';
+@import '../src/canvas/nodes/components/SectionRow/styles.css'; 

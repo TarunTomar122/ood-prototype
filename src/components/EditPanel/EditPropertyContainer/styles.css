@@ -1,4 +1,4 @@
-.editproperty-row{
+.edit-property-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -7,18 +7,8 @@
     margin-bottom: 26px;
 }
 
-.editproperty-container {
+.edit-property-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
-
-    sp-textfield{
-        width: 100%;
-    }
-
-    sp-action-button {
-        width: 72px;
-        --spectrum-icon-size: 20px;
-
-    }
 }

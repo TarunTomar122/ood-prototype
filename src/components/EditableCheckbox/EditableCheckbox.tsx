@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './styles.css';
+// import './styles.css';
 
 import '@spectrum-web-components/checkbox/sp-checkbox.js';
 

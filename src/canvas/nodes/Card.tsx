@@ -1,6 +1,6 @@
-import { Node } from '@xyflow/react';
+import { Node, NodeProps } from '@xyflow/react';
 
-import './card.css';
+// import './card.css';
 
 import EditableLabel from '../../components/EditableLabel/EditableLabel';
 import Section from './components/Section/Section';
@@ -8,13 +8,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import type { RootState, AppDispatch } from '../../store/store';
 import { updateNode } from '../../store/slices/Nodes';
 
+interface Item {
+    label: string;
+    id: string;
+    checked: boolean;
+}
+
 export interface CardProps extends Node {
     data: {
         name: string;
         description: string;
-        attributes: any[];
-        metadata: any[];
-        actions: any[];
+        attributes: Item[];
+        metadata: Item[];
+        actions: Item[];
     };
 }
 

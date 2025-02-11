@@ -1,4 +1,4 @@
-import './Sidebar.css';
+// import './Sidebar.css';
 
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-comment.js';
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-paste.js';

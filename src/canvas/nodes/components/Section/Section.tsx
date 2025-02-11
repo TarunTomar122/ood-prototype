@@ -1,7 +1,7 @@
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-info-circle.js';
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-add.js';
 
-import './styles.css';
+// import './styles.css';
 
 import SectionRow, { SectionRowProps } from '../SectionRow/SectionRow';
 

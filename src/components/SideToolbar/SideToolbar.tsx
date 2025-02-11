@@ -1,4 +1,4 @@
-import './styles.css';
+// import './styles.css';
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-add.js';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -52,7 +52,7 @@ export default function SideToolbar() {
     const nodes = useSelector((state: RootState) => state.nodes.nodes);
 
     useEffect(() => {
-        console.log("nodes in side toolbar", nodes);
+        // console.log("nodes in side toolbar", nodes);
     }, [nodes]);
 
     return (

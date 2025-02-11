@@ -19,7 +19,7 @@ import { setNodes } from '../../store/slices/Nodes';
 
 import Card, { CardProps } from '../nodes/Card';
 
-import './Flow.css';
+// import './Flow.css';
 
 function Flow() {
 
@@ -33,19 +33,24 @@ function Flow() {
 
     const onNodesChange = useCallback(
         (changes: NodeChange[]) => {
-            // setNodes((nds) => applyNodeChanges(changes, nds));
-            const updatedNodes = applyNodeChanges(changes, nodes).map(node => ({
-                ...node,
-                data: {
-                    ...node.data,
-                    name: node.data.name || '',
-                    description: node.data.description || '',
-                    attributes: node.data.attributes || [],
-                    metadata: node.data.metadata || [],
-                    actions: node.data.actions || [],
-                }
-            })) as CardProps[];
-            dispatch(setNodes(updatedNodes));
+            console.log("changes", changes);
+            const filteredChanges = changes.filter(change => 
+                change.type !== 'dimensions'
+            );
+            if(filteredChanges.length > 0) {
+                const updatedNodes = applyNodeChanges(changes, nodes).map(node => ({
+                    ...node,
+                    data: {
+                        ...node.data,
+                        name: node.data.name || '',
+                        description: node.data.description || '',
+                        attributes: node.data.attributes || [],
+                        metadata: node.data.metadata || [],
+                        actions: node.data.actions || [],
+                    }
+                })) as CardProps[];
+                dispatch(setNodes(updatedNodes));
+            }
         },
         [dispatch, nodes],
     );
